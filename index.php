@@ -1,8 +1,5 @@
 <?php require_once('database/connection.php');
 
-//-===== Latest Articles ======-
-/*$sql3 = "SELECT post_id,post_name FROM posts ORDER BY post_id DESC LIMIT 7";
-*/
 $sql3 = "SELECT post_id, post_name FROM posts
 WHERE posts.status = 'approved'
 ORDER BY post_id DESC
@@ -26,14 +23,14 @@ $res3->store_result();
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <!-- Favicons -->
+
   <link href="assets\img\system-logo\INFOSITEZY.png" rel="icon">
   <link href="assets\img\system-logo\INFOSITEZY.png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
+
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
+
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -42,51 +39,36 @@ $res3->store_result();
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
+
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Arsha
-  * Updated: Mar 10 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
-  <!-- ======= Header ======= -->
+
   <?php
   include_once('client-includes\header.php');
   ?>
-  <!-- ======= End header ======= -->
+
 
 
 
   <main id="main">
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex align-items-center">
-
+     <section id="hero" class="d-flex align-items-center">
       <div class="container">
         <div class="row">
           <div class="justify-content-center" data-aos="fade-down" data-aos-delay="200">
-
             <div class="hero-img" data-aos="zoom-out" data-aos-delay="200">
               <img src="assets/img/Expo-title.png" class="img-fluid animated" alt="">
             </div>
-
-
           </div>
         </div>
         <div>
           <span class="scrollDown"></span>
         </div>
       </div>
+    </section>
 
-
-    </section><!-- End Hero -->
-
-    <!-- ======= Services Section ======= -->
     <section style="background-color: #0e0e0e;" id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
 
@@ -144,10 +126,10 @@ $res3->store_result();
       </div>
 
 
-    </section><!-- End Services Section -->
+    </section>
 
 
-    <!-- ======= Hero Section ======= -->
+
     <section id="hero" class="portal-section d-flex align-items-center" style="height: 100%;">
       <div class="portal-row-container container-fluid d-flex flex-column" style="height: 100%;">
         <!-- DDALO -->
@@ -218,21 +200,10 @@ $res3->store_result();
         </a>
 
       </div>
-    </section><!-- End Hero -->
+    </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-  </main><!-- End #main -->
+  </main>
 
   <?php
   include_once('client-includes/footer.php');
@@ -241,7 +212,6 @@ $res3->store_result();
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -250,7 +220,6 @@ $res3->store_result();
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
 </body>
