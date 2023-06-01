@@ -1,5 +1,6 @@
 <?php require_once('database/connection.php');
 
+// fetch approved posts from db
 $sql3 = "SELECT post_id, post_name FROM posts
 WHERE posts.status = 'approved'
 ORDER BY post_id DESC
