@@ -472,6 +472,7 @@ body{
 
 .card {
     transition: transform 0.2s;
+    border-radius: 0px;
 }
 
 .card:hover {
