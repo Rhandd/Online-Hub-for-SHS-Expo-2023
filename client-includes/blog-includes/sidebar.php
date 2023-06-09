@@ -7,7 +7,7 @@
     <div class="rposts">
         <h2 id="rh2" style="font-size: 20px; margin-top: 50px; text-align: center;">Latest</h2>
         <?php
-        $sql = "SELECT post_id,post_name,post_img,ur.id,ur.uname,ct.category_id,ct.category_name FROM posts LEFT JOIN users ur ON posts.author=ur.id LEFT JOIN category ct ON posts.category=ct.category_id ORDER BY post_id DESC LIMIT 5";
+        $sql = "SELECT post_id,post_name,post_img,ur.id,ur.uname,ct.category_id,ct.category_name FROM posts LEFT JOIN users ur ON posts.author=ur.id LEFT JOIN category ct ON posts.category=ct.category_id WHERE posts.status = 'approved' ORDER BY post_id DESC LIMIT 5";
         $res = $conn->prepare($sql);
         $res->bind_result($pid, $pname, $pimg, $uid, $urname, $ctid, $ctname);
         $res->execute();

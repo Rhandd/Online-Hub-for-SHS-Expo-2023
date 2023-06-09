@@ -21,7 +21,8 @@
         </form>
 
         <?php
-        if (isset($_SESSION['uname'])) {
+
+        if (isset($_SESSION['id'])) {
             echo '<a href="createpost.php" class="cat-btn btn btn-primary">Create Post</a>';
         } else {
             echo '<a href="client-includes\login.php" class="cat-btn btn btn-primary">Create Post</a>';

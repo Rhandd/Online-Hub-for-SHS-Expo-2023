@@ -65,13 +65,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="../assets/css/all.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../assets/css/admin.css">
+    <style>
+        body {
+        background-image: url('../assets/img/space.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .login-container {
+        max-width: 400px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 5px;
+        padding: 20px;
+    }
+    .login-container h1 {
+        text-align: center;
+    }
+    .login-container form {
+        margin-top: 30px;
+    }
+    .login-container label {
+        font: bold;
+    }
+    .login-container button[type="submit"] {
+        width: 100%;
+    }
+    </style>
 
 </head>
 
 <body>
 
-<!--
+    <!--
     <div class="container-fluid">
         <div class="row">
             <div class="lform">
@@ -92,21 +121,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>-->
 
-    <h1>Login</h1>
-    <?php if (isset($error)) {
-        echo '<p>' . $error . '</p>';
-    } ?>
-    <form method="post">
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" name="uname" id="uname" required>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" name="upass" id="upass" required>
-        </div>
-        <button type="submit">Login</button>
-    </form>
+    <div class="login-container">
+        <h1>Login</h1>
+        <?php if (isset($error)) {
+            echo '<p class="text-danger">' . $error . '</p>';
+        } ?>
+        <form method="post">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" name="uname" id="uname" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" name="upass" id="upass" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <p class="text-center">Don't have an account? <a href="register.php" class="btn btn-link">Register</a></p>
+    </div>
 </body>
 
 </html>
