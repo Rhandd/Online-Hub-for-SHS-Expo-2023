@@ -197,6 +197,7 @@ if (isset($_REQUEST['imgsubmit'])) {
                             <select id="catinput" name="urole">
                                 <option value="0">Admin</option>
                                 <option value="1">Editor</option>
+                                <option value="2">Attendee</option>
                             </select>
                             <label for="" class="slabel sslabel">Password:</label> <input type="password" name="upass" id="catinput">
                             <input type="hidden" name="hid" value="<?php if (isset($_REQUEST['id'])) {

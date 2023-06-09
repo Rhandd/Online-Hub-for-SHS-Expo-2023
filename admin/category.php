@@ -43,14 +43,14 @@ require_once('../database/connection.php'); ?>
                         $pageno = 1;
                     }
                     $offsetl = ($pageno - 1) * $limit;
-                    $sql = "SELECT * FROM category LIMIT $offsetl,$limit";
+                    $sql = "SELECT category_id, category_name, category_posts FROM category LIMIT $offsetl,$limit";
                     $res = $conn->prepare($sql);
                     $res->bind_result($id, $name, $posts);
                     $res->execute();
                     $res->store_result();
                     if ($res->num_rows() > 0) {
                     ?>
-                        <table class="table table-striped table-hover table-bordered">
+                        <table class="table table   -striped table-hover table-bordered">
                             <thead class="table-dark ">
                                 <tr class="text-center">
                                     <th>S.NO</th>
