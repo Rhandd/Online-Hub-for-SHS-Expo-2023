@@ -41,88 +41,70 @@
 
 <body>
     <!-- ======= Header ======= -->
-    <?php
-    include_once('client-includes\header.php');
-    ?>
+    <?php include_once('client-includes\header.php'); ?>
     <!-- ======= End header ======= -->
-
-
 
     <main id="main">
         <!-- ======= Hero Section ======= -->
         <section id="hero" class="d-flex align-items-center">
-
             <div class="container">
-                <div class="row">
-                    <div class="justify-content-center" data-aos="fade-down" data-aos-delay="200">
-
-                   
-                        <div style="background-color: white; padding: 50px;">
-                            <form action="submitpost.php" method="POST" class="cform" enctype="multipart/form-data">
-                                <span><span id="crh1">Add New Post</span><input type="submit" name="<?php if (isset($upid)) {
-                                                                                                        echo "update";
-                                                                                                    } else {
-                                                                                                        echo "publish";
-                                                                                                    } ?>" class="btn btn-success float-right" value="<?php if (isset($upid)) {
-                                                                                                                                                        echo "Update";
-                                                                                                                                                    } else {
-                                                                                                                                                        echo "Publish";
-                                                                                                                                                    } ?>"></input></span>
-                                <input type="text" class="form-control" name="cheading" id="cheading" placeholder="Enter Article Title..." value="<?php if (isset($upname)) {
-                                                                                                                                                        echo $upname;
-                                                                                                                                                    } ?>" autocomplete="off">
-                                <br>
-                                <textarea name="cdesc" id="cdesc" placeholder="Write Article Here...."><?php if (isset($updesc)) {
-                                                                                                            echo $updesc;
-                                                                                                        } ?></textarea>
-                                <br>
-                                <br>
-                                <h3>Category</h3>
-                                <select name="crselect" id="crselect">
-                                    <option>Select Category</option>
-                                    <?php
-                                    $sql = "SELECT category_id,category_name FROM category";
-                                    $res = $conn->prepare($sql);
-                                    $res->bind_result($id, $name);
-                                    $res->execute();
-                                    $res->store_result();
-                                    if ($res->num_rows() > 0) {
-                                        while ($res->fetch()) { ?>
-                                            <option value="<?php echo $id; ?>" <?php if (isset($upcat) && ($upcat == $id)) {
-                                                                                    echo "selected";
-                                                                                } else {
-                                                                                    echo "";
-                                                                                } ?>><?php echo $name; ?></option>
-                                    <?php }
-                                    } ?>
-                                </select>
-                                <br>
-                                <br><br>
-                                <h3>Post Image</h3>
-                                <input type="file" name="imgt" id="img">
-                                <input type="hidden" name="oldimg" value="<?php if (isset($upimg)) {
-                                                                                echo $upimg;
-                                                                            } ?>">
-                                <br>
-                                <br>
-                                <br>
-                                <br>
+                <div class="row justify-content-center" data-aos="fade-down" data-aos-delay="200">
+                    <div class="col-lg-8">
+                        <div class="createpost-form bg-white p-4">
+                            <h2 class="text-center mb-4" style="color: #333;">Add New Post</h2>
+                            <?php if (!empty($errorMsg)) : ?>
+                                <div class="alert alert-danger" role="alert">
+                                    <?php echo $errorMsg; ?>
+                                </div>
+                            <?php elseif (isset($registrationSuccess) && $registrationSuccess) : ?>
+                                <div class="alert alert-success" role="alert">
+                                    Your post is pending review and waiting for approval.
+                                </div>
+                            <?php endif; ?>
+                            <form action="submitpost.php" method="POST" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="cheading" id="cheading" placeholder="Enter Article Title..." value="<?php if (isset($upname)) { echo $upname; } ?>" autocomplete="off">
+                                </div>
+                                <div class="mb-3">
+                                    <textarea name="cdesc" id="cdesc" class="form-control" rows="6" style="max-height: 300px;" placeholder="Write Article Here..."><?php if (isset($updesc)) { echo $updesc; } ?></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="crselect" class="form-label">Category</label>
+                                    <select name="crselect" id="crselect" class="form-select">
+                                        <option>Select Category</option>
+                                        <?php
+                                        $sql = "SELECT category_id,category_name FROM category";
+                                        $res = $conn->prepare($sql);
+                                        $res->bind_result($id, $name);
+                                        $res->execute();
+                                        $res->store_result();
+                                        if ($res->num_rows() > 0) {
+                                            while ($res->fetch()) { ?>
+                                                <option value="<?php echo $id; ?>" <?php if (isset($upcat) && ($upcat == $id)) { echo "selected"; } ?>><?php echo $name; ?></option>
+                                        <?php }
+                                        } ?>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="img" class="form-label">Post Image</label>
+                                    <input type="file" name="imgt" id="img" class="form-control">
+                                    <input type="hidden" name="oldimg" value="<?php if (isset($upimg)) { echo $upimg; } ?>">
+                                 
+                                </div>
+                                <div class="text-center">
+                                    <input type="submit" name="<?php if (isset($upid)) { echo "update"; } else { echo "publish"; } ?>" class="btn btn-success" value="<?php if (isset($upid)) { echo "Update"; } else { echo "Publish"; } ?>">
+                                </div>
                             </form>
+                            <p id="category-message" class="mt-3" style="color: red; font-size: 16px; font-weight: bold;"></p>
+
                         </div>
-
-
-
-
                     </div>
                 </div>
             </div>
         </section><!-- End Hero -->
-
     </main><!-- End #main -->
 
-    <?php
-    include_once('client-includes/footer.php');
-    ?>
+    <?php include_once('client-includes/footer.php'); ?>
 
     <div id="preloader"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -139,6 +121,38 @@
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
 
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var categoryDropdown = document.getElementById("crselect");
+        var messageElement = document.getElementById("category-message");
+
+        categoryDropdown.addEventListener("change", function() {
+            var selectedCategory = categoryDropdown.options[categoryDropdown.selectedIndex].text;
+
+            // Define the category messages dynamically based on the categories in the database
+            var categoryMessages = {
+                <?php
+                $sql = "SELECT category_id, category_name, guideline FROM category";
+                $res = $conn->prepare($sql);
+                $res->bind_result($id, $name, $guideline);
+                $res->execute();
+                $res->store_result();
+                if ($res->num_rows() > 0) {
+                    while ($res->fetch()) {
+                        echo "'" . $name . "': '" . addslashes($guideline) . "', ";
+                    }
+                }
+                ?>
+            };
+
+            if (categoryMessages.hasOwnProperty(selectedCategory)) {
+                messageElement.textContent = categoryMessages[selectedCategory];
+            } else {
+                messageElement.textContent = "";
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

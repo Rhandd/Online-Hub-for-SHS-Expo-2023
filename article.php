@@ -52,9 +52,9 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="item nav-link" href="index.php">HOME</a></li>
-                <li><a class="item nav-link" href="portal.php">PORTAL</a></li>
+             <!--   <li><a class="item nav-link" href="portal.php">PORTAL</a></li>-->
                 <li><a class="item nav-link" href="blogs.php">POSTS</a></li>
-                <li><a class="item nav-link " href="#about">ABOUT US</a></li>
+               <!-- <li><a class="item nav-link " href="#about">ABOUT US</a></li>-->
                
 
                 <li>
@@ -86,7 +86,7 @@
     <div class="row">
       <div class="col-12 col-md-8 main">
         <?php
-        if (isset($_REQUEST['id'])) {
+       if (isset($_REQUEST['id'])) {
           $id = $_REQUEST['id'];
         } else {
           header('location:error.php');

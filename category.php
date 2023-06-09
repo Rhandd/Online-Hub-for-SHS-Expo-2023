@@ -53,7 +53,14 @@
             <div class="container">
                 <div class="row">
                     <?php
-                    $sql = "SELECT post_id,post_name,post_img,ur.id,ur.uname,ct.category_id,ct.category_name FROM posts LEFT JOIN users ur ON posts.author=ur.id LEFT JOIN category ct ON posts.category=ct.category_id ORDER BY post_id DESC LIMIT 3";
+                    $sql = "SELECT post_id, post_name, post_img, ur.id, ur.uname, ct.category_id, ct.category_name
+                      FROM posts
+                      LEFT JOIN users ur ON posts.author=ur.id
+                      LEFT JOIN category ct ON posts.category=ct.category_id
+                      WHERE posts.status = 'approved'
+                      ORDER BY post_id DESC
+                      LIMIT 3";
+
                     $res = $conn->prepare($sql);
                     $res->bind_result($pid, $pname, $pimg, $uid, $urname, $ctid, $ctname);
                     $res->execute();
@@ -70,7 +77,7 @@
                                         <h5 class="card-title"><a href="article.php?id=<?php echo $pid ?>" style="text-decoration:none; color:black;"><?php if (isset($pname)) {
                                                                                                                                                             echo $pname;
                                                                                                                                                         } ?></a></h5>
-                                       
+
                                     </div>
                                 </div>
                             </div>
